@@ -1,0 +1,9 @@
+C:\Users\Antonio Borani\source\repos\TickData\obj\Debug\TickData.csprojAssemblyReference.cache
+C:\Users\Antonio Borani\source\repos\TickData\obj\Debug\TickData.csproj.CoreCompileInputs.cache
+C:\Users\Antonio Borani\source\repos\TickData\bin\Debug\TickData.dll
+C:\Users\Antonio Borani\source\repos\TickData\bin\Debug\TickData.pdb
+C:\Users\Antonio Borani\source\repos\TickData\bin\Debug\cAlgo.API.dll
+C:\Users\Antonio Borani\source\repos\TickData\bin\Debug\cAlgo.API.xml
+C:\Users\Antonio Borani\source\repos\TickData\obj\Debug\TickData.csproj.CopyComplete
+C:\Users\Antonio Borani\source\repos\TickData\obj\Debug\TickData.dll
+C:\Users\Antonio Borani\source\repos\TickData\obj\Debug\TickData.pdb
