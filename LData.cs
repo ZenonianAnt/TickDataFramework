@@ -1,8 +1,4 @@
-﻿using System;
-using cAlgo.API;
-using cAlgo.API.Internals;
-using System.Collections.Generic;
-
+﻿
 //this class is a loader for tick data; instanciate and object by passing to the constructor
 //the path to the desired file, start date, end date and data density expressed in 1 in X ticks
 //once the loader has loaded tick data, it is possible to aggregate it in candles, to do this, use the
@@ -11,6 +7,11 @@ using System.Collections.Generic;
 
 namespace cAlgo
 {
+    using System;
+    using cAlgo.API;
+    using cAlgo.API.Internals;
+    using System.Collections.Generic;
+
     public class LData
     {
         private List<double> Open;
@@ -19,6 +20,35 @@ namespace cAlgo
         private List<double> Close;
         private List<int> Volume;
         private List<Tick> Ticks;
+
+        #region members
+        public string Path { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public int Density { get; set; }
+        #endregion
+
+        public LData(string path, DateTime startDate, DateTime endDate, int Density)
+        {
+            this.Path = path;
+            this.StartDate = startDate;
+            this.EndDate = endDate;
+            this.Density = Density;
+            Clean();
+            CleanTicks();
+        }
+
+        public LData(string path, DateTime startDate, DateTime endDate, int Density, bool autoLoad)
+        {
+            this.Path = path;
+            this.StartDate = startDate;
+            this.EndDate = endDate;
+            this.Density = Density;
+            Clean();
+            CleanTicks();
+            if (autoLoad)
+                TryLoadTickData();
+        }
 
         #region getters
         public List<double> GetOpen()
@@ -51,36 +81,7 @@ namespace cAlgo
             return this.Ticks;
         }
         #endregion
-
-        #region members
-        public string Path { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-        public int Density { get; set; }
-        #endregion
-
-        public LData(string path, DateTime startDate, DateTime endDate, int Density)
-        {
-            this.Path = path;
-            this.StartDate = startDate;
-            this.EndDate = endDate;
-            this.Density = Density;
-            Clean();
-            CleanTicks();
-        }
-
-        public LData(string path, DateTime startDate, DateTime endDate, int Density, bool autoLoad)
-        {
-            this.Path = path;
-            this.StartDate = startDate;
-            this.EndDate = endDate;
-            this.Density = Density;
-            Clean();
-            CleanTicks();
-            if (autoLoad)
-                TryLoadTickData();
-        }
-
+     
         #region loaders
         public bool TryLoadTickData()
         {
